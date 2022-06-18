@@ -7,7 +7,7 @@ function BigCard() {
                 <div >
                     <img class="rounded-t-2xl h-[32rem] md:w-96 w-full bg-slate-500 relative " src="https://source.unsplash.com/random/900×700/?code" alt="" />
                 </div>
-                <div class="p-5 bg-[#2166a7] rounded-b-2xl text-center flex align-middle justify-center">
+                <div class="p-5  transition  bg-[#2166a7]  hover:bg-[#2166a7f3] duration-300 rounded-b-2xl text-center flex align-middle justify-center">
                     <div class='h-20 md:w-96 w-12/12'>
                         <a href='#' class="mb-3 text-3xl font-bold text-white ">UNDERGRADUATE ADMISSIONS</a>
                     </div>
