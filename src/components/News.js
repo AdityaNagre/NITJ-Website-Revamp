@@ -1,49 +1,66 @@
-import React from 'react'
+import React, {useState} from 'react'
+import Slider from "react-slick";
+import NewsCards from './NewsCards';
 
 function News() {
+    const [toggleSlider, settoggleSlider] = useState(false)
+
+    const settings = {
+        dots: false,
+        arrows:false,
+        infinite: true,
+        slidesToShow: 4,
+        slidesToScroll: 1,
+        vertical: true,
+        verticalSwiping: true,
+        swipeToSlide: true,
+        autoplay: true,
+        cssEase: "linear",
+        speed: 3000
+      };
+
+      const handleMouseOver=()=>{
+        settoggleSlider(true)
+      }
+      const handleMouseOut=()=>{
+        settoggleSlider(false)
+      }
+
     return (
         <>
-            <div className="container px-0 mx-0 border-4 border-blue-800 w-full  h-[25.5rem]">
-                <div className="flex scrollbar mx-3 my-3 h-96 flex-col overflow-auto  ">
-                    <div className="cotainer mr-2">
-                        <div class=" mb-3 py-2 text-sm text-black bg-blue-100 rounded-lg"  role="alert">
-                            <div className=' mx-3 pl-2 border-l-4 border-blue-500 md:pb-5' >
-                                <h1 className='text-lg font-bold'>NITJ Campus</h1>
-                                <span class="font-medium">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</span>
-                            </div>
-                        </div>
-                        <div class=" mb-3 py-2 text-sm text-black bg-yellow-100 rounded-lg"  role="alert">
-                            <div className=' mx-3 pl-2 border-l-4 border-yellow-500 md:pb-5' >
-                                <h1 className='text-lg font-bold'>NITJ Campus</h1>
-                                <span class="font-medium">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</span>
-                            </div>
-                        </div>
-
-                        <div class=" mb-3 py-2 text-sm text-black bg-red-100 rounded-lg" role="alert">
-                            <div className=' mx-3 pl-2 border-l-4 border-red-500 md:pb-5' >
-                                <h1 className='text-lg font-bold'>NITJ Campus</h1>
-                                <span class="font-medium">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</span>
-                            </div>
-                        </div>
-
-                        <div class=" mb-3 py-2 text-sm text-black bg-green-100 rounded-lg " role="alert">
-                            <div className=' mx-3 pl-2 border-l-4 border-green-500 md:pb-5' >
-                                <h1 className='text-lg font-bold'>NITJ Campus</h1>
-                                <span class="font-medium">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</span>
-                            </div>
-                        </div>
-
-                        <div class=" mb-3 py-2 text-sm text-black bg-blue-100 rounded-lg " role="alert">
-                            <div className=' mx-3 pl-2 border-l-4 border-blue-500 md:pb-5' >
-                                <h1 className='text-lg font-bold'>NITJ Campus</h1>
-                                <span class="font-medium">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</span>
-                            </div>
-                        </div>
-
+            <div onMouseOver={handleMouseOver} onMouseOut={handleMouseOut} className="container px-0 mx-0 border-4 border-blue-800 w-full  h-[26.2rem] hover:border-black" >
+                {
+                    !toggleSlider &&
+                    <div className="hidden md:flex  mx-3 md:p-1 my-3 h-96 flex-col overflow-hidden">
+                    <Slider {...settings}>
+                        <NewsCards color="indigo" padding="[1.15rem]"/>
+                        <NewsCards color="yellow" padding="[1.15rem]"/>
+                        <NewsCards color="red" padding="[1.15rem]"/>
+                        <NewsCards color="green" padding="[1.15rem]"/>
+                        <NewsCards color="sky" padding="[1.15rem]"/>
+                    </Slider>
                     </div>
-
-                </div>
+                }
+                {
+                    toggleSlider && 
+                    <div className="hidden md:flex  mx-3 md:p-1 md:mt-4 h-96 flex-col overflow-auto scrollbar">
+                        <NewsCards color="indigo" padding="5"/>
+                        <NewsCards color="yellow" padding="5"/>
+                        <NewsCards color="red" padding="5"/>
+                        <NewsCards color="green" padding="5"/>
+                        <NewsCards color="sky" padding="5"/>
+                    </div>
+                }
+                <div className="md:hidden  mx-3 my-3 h-96 flex-col mt-5 overflow-auto scrollbar">
+                        <NewsCards color="indigo" padding="5"/>
+                        <NewsCards color="yellow" padding="5"/>
+                        <NewsCards color="red" padding="5"/>
+                        <NewsCards color="green" padding="5"/>
+                        <NewsCards color="sky" padding="5"/>
+                    </div>
+                
             </div>
+            
         </>
     )
 }
